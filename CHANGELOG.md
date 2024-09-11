@@ -4,6 +4,51 @@ SPDX-FileCopyrightText: 2023 XWiki CryptPad Team <contact@cryptpad.org> and cont
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+# 2024.6.1
+
+## Goals
+
+This is a bugfix release to address issues that were reported by Cryptpad.fr users. We took the opportunity to update the translations with some new languages contributed by the community.
+
+## Improvements
+
+- Translations update from CryptPad Translations [#1575](https://github.com/cryptpad/cryptpad/pull/1575)
+  - Added: Español cubano, اَلْعَرَبِيَّةُ Arabic, Svenska
+  - Removed some languages without enough coverage
+    - Greek (16%)
+    - Romanian (36%)
+
+## Fixes
+- Calendar events sometimes don’t appear when created [#1551](https://github.com/cryptpad/cryptpad/issues/1551) fixed by [072dba2](https://github.com/cryptpad/cryptpad/commit/072dba254e3c2be32cd6b261d84510909deb713f)
+- Revert the new method of counting registered users in the admin panel [4544be6](https://github.com/cryptpad/cryptpad/commit/4544be6b4d9fa7291b19cb366f7dd492dfe07340)
+- Fix broken OnlyOffice Document [#1572](https://github.com/cryptpad/cryptpad/issues/1572)
+- Fix printing in Code documents [#1557](https://github.com/cryptpad/cryptpad/pull/1557) [#1478](https://github.com/cryptpad/cryptpad/pull/1478) 
+- Fix OnlyOffice undefined functions [#1550](https://github.com/cryptpad/cryptpad/pull/1550)
+- Fix keyboard operation of confirm modals [#1576](https://github.com/cryptpad/cryptpad/issues/1576)
+  - Pressing Enter on the "Cancel" button triggered the "OK" button instead
+
+
+## Upgrade notes
+
+If you are upgrading from a version older than `2024.6.0` please read the upgrade notes of all versions between yours and `2024.6.1` to avoid configuration issues.
+
+To upgrade:
+
+1. Stop your server
+2. Get the latest code with git
+
+```bash
+git fetch origin --tags
+git checkout 2024.6.1
+npm ci
+npm run install:components
+./install-onlyoffice.sh
+```
+
+3. Restart your server
+4. Review your instance's checkup page to ensure that you are passing all tests
+
+
 # 2024.6.0
 
 ## Goals
@@ -14,7 +59,7 @@ This release introduces a new onboarding flow to guide administrators through th
 
 - Onboarding screens & app configuration [#1513](https://github.com/cryptpad/cryptpad/pull/1513)
 - Bahasa Indonesia is a new available language [fe78b6a](https://github.com/cryptpad/cryptpad/commit/fe78b6ab1dc76ce9eb8d5361c309db8e92117fa8)
-  - Thanks to our [Weblate](https://weblate.cryptpad.org) contributors who made that happen! 
+  - Thanks to our [Weblate](https://weblate.cryptpad.org) contributors who made that happen!
 
 ## Improvements
 
@@ -35,6 +80,7 @@ This release introduces a new onboarding flow to guide administrators through th
   - Remove x2t from the CryptPad repo [#1454](https://github.com/cryptpad/cryptpad/issues/1454)
   - Other OnlyOffice users are shown as "Guest" [#1446](https://github.com/cryptpad/cryptpad/issues/1446)
   - Document PDF exports are empty when remote embedding is disabled  [#1472](https://github.com/cryptpad/cryptpad/issues/1472)
+  - Sometimes images of a presentation are not exported to PDF [#1500](https://github.com/cryptpad/cryptpad/issues/1500)
   - Automatic upgrade of an OnlyOffice document fails sometimes [#1534](https://github.com/cryptpad/cryptpad/issues/1534)
   - Import/Export is broken [#1532](https://github.com/cryptpad/cryptpad/issues/1532)
   - Print is broken [#1533](https://github.com/cryptpad/cryptpad/issues/1533)
@@ -46,7 +92,7 @@ This release introduces a new onboarding flow to guide administrators through th
   - Switch to new `http2` Nginx option [#1516](https://github.com/cryptpad/cryptpad/pull/1516)
   - Server fixes and aggregated stats [#1509](https://github.com/cryptpad/cryptpad/pull/1509)
   - Create the block folder at boot [#911](https://github.com/cryptpad/cryptpad/pull/911)
-  - Remove obsolete `version` from `docker-compose.yml` [2e716eb](https://github.com/cryptpad/cryptpad/commit/2e716eb4e39fb835f95a1fa1a340e01142d11b1c) 
+  - Remove obsolete `version` from `docker-compose.yml` [2e716eb](https://github.com/cryptpad/cryptpad/commit/2e716eb4e39fb835f95a1fa1a340e01142d11b1c)
 - Other
   - Unsharp the corners when hovering the dismiss button on notification drop-down menu [#1466](https://github.com/cryptpad/cryptpad/pull/1466)
   - Fix contextual menu `Open` on anonymous drive [#1464](https://github.com/cryptpad/cryptpad/pull/1464)
