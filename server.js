@@ -176,7 +176,7 @@ nThen(function (w) {
         let monitoring = Monitoring.getData('main');
         let Server = Env.Server;
         let stats = Server.getSessionStats();
-        monitoring.ws = stats.total;
+        monitoring.stats = stats;
         monitoring.channels = Server.getActiveChannelCount();
         monitoring.registered = Object.keys(Env.netfluxUsers).length;
         // Send updated values
